@@ -7,9 +7,6 @@
 
 * * *
 
-**note:** anyè is in early development. The doc is written as a *TODO*, the code will come in the week.
-
-* * *
 
 ## Getting started
 
