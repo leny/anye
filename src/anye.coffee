@@ -11,3 +11,28 @@
 "use strict"
 
 oDataStore = {}
+rMatchURLParam = /:[a-z0-9_]+/gi
+
+module.exports = oAnye =
+    clear: ->
+        oDataStore = {}
+
+    set: ( sName, sURL ) ->
+        oDataStore[ sName ] = sURL
+
+    get: ( sName, oParams, bEncode ) ->
+        throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
+
+        unless aMatches = sURL.match rMatchURLParam
+            return sURL
+
+        for sMatch in aMatches
+            throw new Error "Undefined param '#{ sMatch }'!" unless mValue = oParams[ sMatch.slice 1 ]
+            sURL = sURL.replace sMatch, mValue
+
+        if !!bEncode then encodeURI sURL else sURL
+
+_countStoredURLs = ->
+    Object.keys( oDataStore ).length
+
+oAnye.__defineGetter__ "length", _countStoredURLs
