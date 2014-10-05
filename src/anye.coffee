@@ -23,12 +23,16 @@ module.exports = oAnye =
     get: ( sName, oParams, bEncode ) ->
         throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
 
-        unless aMatches = sURL.match rMatchURLParam
+        unless aMatches = sURL.match( rMatchURLParam ) ? []
             return sURL
 
         for sMatch in aMatches
             throw new Error "Undefined param '#{ sMatch }'!" unless mValue = oParams[ sMatch.slice 1 ]
             sURL = sURL.replace sMatch, mValue
+
+        i = 0
+        for sParam, mValue of oParams when ":#{ sParam }" not in aMatches
+            sURL += ( if i++ is 0 then "?" else "&" ) + "#{ sParam }=#{ mValue }"
 
         if !!bEncode then encodeURI sURL else sURL
 
