@@ -52,7 +52,7 @@ Anye.get( sName, oParams, bEncode )
 ##### Arguments
 
 - `sName` is the key of the URL in the store.
-- `oParams` is an hash of parameters for the URL, replacing the `:variable` in the stored URL. 
+- `oParams` is an hash of parameters for the URL, replacing the `:variable` in the stored URL. All the additonal parameters will be added to the query string of the URL.
 - `bEncode` is a flag to ensure the returned URL is URL-encoded. `false` by default.
 
 **Note:** if a parameter of the URL is not given, **anyè** will throws.
@@ -62,6 +62,7 @@ Anye.get( sName, oParams, bEncode )
 ```javascript
 Anye.get( "name", { id: 2 } ); // will returns "/url/2"
 Anye.get( "name", { id: "bar^" }, true ); // will returns "/url/bar%5E"
+Anye.get( "name", { id: 2, foo: "bar", bar: "baz" } ); // will returns "/url/2?foo=bar&bar=baz"
 ```
 
 ### Clear the store
