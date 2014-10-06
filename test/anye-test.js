@@ -40,20 +40,20 @@ module.exports = {
         oTest.equal( Anye.get( "multi-params", { id: 2, module: "foo" } ), "/url/2/foo", "Anye.get should return the good url, with the given params." );
         oTest.equal( Anye.get( "multi-params", { module: 2, id: "foo" } ), "/url/foo/2", "Anye.get should return the good url, with the given params." );
 
-            // URL Encoding
-        oTest.equal( Anye.get( "one-param", { id: "bar^" } ), "/url/bar^", "Anye.get should return the good url, with the given params." );
-        oTest.equal( Anye.get( "one-param", { id: "bar^" }, true ), "/url/bar%5E", "Anye.get should return the good url, with the given params, and URL-encoded." );
+            // URL Decoding
+        oTest.equal( Anye.get( "one-param", { id: "bar^" } ), "/url/bar%5E", "Anye.get should return the good url, with the given params, and URL-encoded by default." );
+        oTest.equal( Anye.get( "one-param", { id: "bar^" }, true ), "/url/bar^", "Anye.get should return the good url, with the given params, and URL-decoded." );
 
             // Additional parameters
         oTest.equal( Anye.get( "simple", { id: 2, foo: "bar" } ), "/url/?id=2&foo=bar", "Anye.get should return the good url and add additional params to the query string." );
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar" } ), "/url/2?foo=bar", "Anye.get should return the good url, with the given params, and add additional params to the query string." );
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: "baz" } ), "/url/2?foo=bar&bar=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string." );
-        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar^", bar: "baz" }, true ), "/url/2?foo=bar%5E&bar=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, and URL-encoded." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar^", bar: "baz" }, true ), "/url/2?foo=bar^&bar=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, and URL-decoded." );
 
             // Complex & nested additional parameters
-        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: [ 1, 2, 3 ] } ), "/url/2?foo=bar&bar[0]=1&bar[1]=2&bar[2]=3", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Arrays." );
-        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar[baz]=bar&bar[zab]=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
-        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects, and URL-encoded." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: [ 1, 2, 3 ] } ), "/url/2?foo=bar&bar%5B0%5D=1&bar%5B1%5D=2&bar%5B2%5D=3", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Arrays." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } }, true ), "/url/2?foo=bar&bar[baz]=bar&bar[zab]=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects, and URL-decoded." );
 
         oTest.done();
     }
