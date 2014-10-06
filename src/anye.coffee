@@ -23,7 +23,9 @@ _set = ( sName, sURL ) ->
 
 _get = ( sName, oParams, bDecode ) ->
     throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
+    _generate sURL, oParams, bDecode
 
+_generate = ( sURL, oParams, bDecode ) ->
     return sURL unless aMatches = sURL.match( rMatchURLParam ) ? []
 
     for sMatch in aMatches
@@ -42,6 +44,7 @@ _count = ->
 
 module.exports = oAnye =
     clear: _clear
+    generate: _generate
     set: _set
     store: _set
     get: _get
