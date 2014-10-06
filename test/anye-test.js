@@ -50,6 +50,11 @@ module.exports = {
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: "baz" } ), "/url/2?foo=bar&bar=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string." );
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar^", bar: "baz" }, true ), "/url/2?foo=bar%5E&bar=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, and URL-encoded." );
 
+            // Complex & nested additional parameters
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: [ 1, 2, 3 ] } ), "/url/2?foo=bar&bar[0]=1&bar[1]=2&bar[2]=3", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Arrays." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar[baz]=bar&bar[zab]=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
+        oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects, and URL-encoded." );
+
         oTest.done();
     }
 };
