@@ -50,7 +50,7 @@ Anye.set( "name", "/url/:id" ); // will returns "/url/:id"
 #### Signature
 
 ```javascript
-Anye.get( sName, oParams, bEncode )
+Anye.get( sName, oParams, bDecode )
 ```
 
 ##### Arguments
