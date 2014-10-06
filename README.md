@@ -35,6 +35,10 @@ Anye.set( sName, sURL );
 
 **Note:** the `set` method returns the stored URL, so you can use it directly in your route definition like in express: `app.post( Anye.set( "name", "/url/:id" ), routeHandler );` 
 
+##### Aliases
+
+`Anye.store()`
+
 #### Example
 
 ```javascript
@@ -58,6 +62,10 @@ Anye.get( sName, oParams, bEncode )
 **Note:** if a parameter of the URL is not given, **anyè** will throws.
 
 **Update:** since version `0.3.0`, all the returned URLs are URL-encoded by default.
+
+##### Aliases
+
+`Anye.retrieve(), Anye.build()`
 
 #### Example
 
