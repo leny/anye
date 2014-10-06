@@ -52,17 +52,21 @@ Anye.get( sName, oParams, bEncode )
 ##### Arguments
 
 - `sName` is the key of the URL in the store.
-- `oParams` is an hash of parameters for the URL, replacing the `:variable` in the stored URL. All the additonal parameters will be added to the query string of the URL.
-- `bEncode` is a flag to ensure the returned URL is URL-encoded. `false` by default.
+- `oParams` is an hash of parameters for the URL, replacing the `:variable` in the stored URL. All the additonal parameters will be added to the query string of the URL. Array & Object are supported.
+- `bDecode` is a flag to ensure the returned URL is URL-decoded. `false` by default.
 
 **Note:** if a parameter of the URL is not given, **anyè** will throws.
+
+**Update:** since version `0.3.0`, all the returned URLs are URL-encoded by default.
 
 #### Example
 
 ```javascript
 Anye.get( "name", { id: 2 } ); // will returns "/url/2"
-Anye.get( "name", { id: "bar^" }, true ); // will returns "/url/bar%5E"
+Anye.get( "name", { id: "bar^" } ); // will returns "/url/bar%5E"
+Anye.get( "name", { id: "bar^" }, true ); // will returns "/url/bar^"
 Anye.get( "name", { id: 2, foo: "bar", bar: "baz" } ); // will returns "/url/2?foo=bar&bar=baz"
+Anye.get( "name", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ); // will returns "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz"
 ```
 
 ### Clear the store
@@ -87,6 +91,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+**2014-10-06:** version `0.3.0`, returned URLs are encoded by default
 **2014-10-06:** version `0.2.0`, add query-string population with additional parameters.
 **2014-10-05:** version `0.1.0`, initial release.
 
