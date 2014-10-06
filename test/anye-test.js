@@ -55,6 +55,16 @@ module.exports = {
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } }, true ), "/url/2?foo=bar&bar[baz]=bar&bar[zab]=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects, and URL-decoded." );
 
+        // Generating
+        oTest.equal( Anye.generate( "/url/" ), "/url/", "Anye.generate should return the given url." );
+        oTest.throws( function() { Anye.generate( "/url/:id" ); }, "Anye.generate should throws when giving an url with params, and no giving params." );
+        oTest.equal( Anye.generate( "/url/:id", { id: 2 } ), "/url/2", "Anye.generate should return the given url, with the given params." );
+        oTest.equal( Anye.generate( "/url/:id/:module", { id: 2, module: "foo" } ), "/url/2/foo", "Anye.generate should return the given url, with the given params." );
+        oTest.equal( Anye.generate( "/url/:id", { id: "bar^" } ), "/url/bar%5E", "Anye.generate should return the given url, with the given params, and URL-encoded by default." );
+        oTest.equal( Anye.generate( "/url/:id", { id: "bar^" }, true ), "/url/bar^", "Anye.generate should return the given url, with the given params, and URL-decoded." );
+        oTest.equal( Anye.generate( "/url/:id", { id: 2, foo: "bar" } ), "/url/2?foo=bar", "Anye.generate should return the given url, with the given params, and add additional params to the query string." );
+        oTest.equal( Anye.generate( "/url/:id", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.generate should return the given url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
+
         // Aliases
         oTest.equal( Anye.store( "simple", "/url/" ), "/url/", "Anye.store() should behave like Anye.set()." );
         oTest.equal( Anye.retrieve( "simple" ), "/url/", "Anye.retrieve() should behave like Anye.get()." );
