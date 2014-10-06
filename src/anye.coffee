@@ -10,6 +10,8 @@
 
 "use strict"
 
+QS = require "qs"
+
 oDataStore = {}
 rMatchURLParam = /:[a-z0-9_]+/gi
 
@@ -20,21 +22,21 @@ module.exports = oAnye =
     set: ( sName, sURL ) ->
         oDataStore[ sName ] = sURL
 
-    get: ( sName, oParams, bEncode ) ->
+    get: ( sName, oParams, bDecode ) ->
         throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
 
-        unless aMatches = sURL.match( rMatchURLParam ) ? []
-            return sURL
+        return sURL unless aMatches = sURL.match( rMatchURLParam ) ? []
 
         for sMatch in aMatches
             throw new Error "Undefined param '#{ sMatch }'!" unless mValue = oParams[ sMatch.slice 1 ]
-            sURL = sURL.replace sMatch, mValue
+            sURL = sURL.replace sMatch, encodeURIComponent mValue
 
-        i = 0
-        for sParam, mValue of oParams when ":#{ sParam }" not in aMatches
-            sURL += ( if i++ is 0 then "?" else "&" ) + "#{ sParam }=#{ mValue }"
+        oAdditionalParams = {}
+        oAdditionalParams[ sParam ] = mValue for sParam, mValue of oParams when ":#{ sParam }" not in aMatches
 
-        if !!bEncode then encodeURI sURL else sURL
+        sURL += "?#{ sQueryString }" if sQueryString = QS.stringify oAdditionalParams
+
+        if !!bDecode then decodeURIComponent sURL else sURL
 
 _countStoredURLs = ->
     Object.keys( oDataStore ).length
