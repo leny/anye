@@ -55,6 +55,11 @@ module.exports = {
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ), "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects." );
         oTest.equal( Anye.get( "one-param", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } }, true ), "/url/2?foo=bar&bar[baz]=bar&bar[zab]=baz", "Anye.get should return the good url, with the given params, and add additional params to the query string, event the complex ones, like Objects, and URL-decoded." );
 
+        // Aliases
+        oTest.equal( Anye.store( "simple", "/url/" ), "/url/", "Anye.store() should behave like Anye.set()." );
+        oTest.equal( Anye.retrieve( "simple" ), "/url/", "Anye.retrieve() should behave like Anye.get()." );
+        oTest.equal( Anye.build( "simple" ), "/url/", "Anye.build() should behave like Anye.get()." );
+
         oTest.done();
     }
 };
