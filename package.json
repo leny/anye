@@ -33,7 +33,7 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt test"
   },
   "devDependencies": {
     "coffeelint": "^1.6.0",
@@ -45,5 +45,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "matchdep": "^0.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "qs": "^2.2.4"
+  }
 }
