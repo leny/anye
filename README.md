@@ -77,6 +77,32 @@ Anye.get( "name", { id: 2, foo: "bar", bar: "baz" } ); // will returns "/url/2?f
 Anye.get( "name", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ); // will returns "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz"
 ```
 
+### Generate an URL
+
+#### Signature
+
+```javascript
+Anye.get( sURL, oParams, bDecode )
+```
+
+##### Arguments
+
+- `sURL` is the URL to use. It can have named-parameters beginning by `:`, like in `/url/:id`.
+- `oParams` is an hash of parameters for the URL, replacing the `:variable` in the stored URL. All the additonal parameters will be added to the query string of the URL. Array & Object are supported.
+- `bDecode` is a flag to ensure the returned URL is URL-decoded. `false` by default.
+
+**Note:** if a parameter of the URL is not given, **anyè** will throws.
+
+#### Example
+
+```javascript
+Anye.generate( "/url/:id", { id: 2 } ); // will returns "/url/2"
+Anye.generate( "/url/:id", { id: "bar^" } ); // will returns "/url/bar%5E"
+Anye.generate( "/url/:id", { id: "bar^" }, true ); // will returns "/url/bar^"
+Anye.generate( "/url/:id", { id: 2, foo: "bar", bar: "baz" } ); // will returns "/url/2?foo=bar&bar=baz"
+Anye.generate( "/url/:id", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ); // will returns "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz"
+```
+
 ### Clear the store
 
 #### Signature
