@@ -125,10 +125,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-**2014-10-07:** version `0.4.0`, add aliases, add `generate` method
-**2014-10-06:** version `0.3.0`, returned URLs are encoded by default
-**2014-10-06:** version `0.2.0`, add query-string population with additional parameters.
-**2014-10-05:** version `0.1.0`, initial release.
+* **2014-10-07:** version `0.4.0`, add aliases, add `generate` method
+* **2014-10-06:** version `0.3.0`, returned URLs are encoded by default
+* **2014-10-06:** version `0.2.0`, add query-string population with additional parameters.
+* **2014-10-05:** version `0.1.0`, initial release.
 
 ## License
 
