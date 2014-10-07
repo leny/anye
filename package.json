@@ -9,23 +9,29 @@
     "route",
     "url"
   ],
-  "homepage": "https://github.com/leny/anye",
+  "homepage": "https://github.com/krkn/anye",
   "author": {
-    "name": "leny",
-    "email": "info@flatland.be",
-    "url": "http://leny.me"
+    "name": "krkn",
+    "email": "info@krkn.be"
   },
+  "contributors": [
+    {
+      "name": "leny",
+      "email": "leny@krkn.be",
+      "url": "http://leny.me"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/leny/anye.git"
+    "url": "git://github.com/krkn/anye.git"
   },
   "bugs": {
-    "url": "https://github.com/leny/anye/issues"
+    "url": "https://github.com/krkn/anye/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/leny/anye/blob/master/LICENSE-MIT"
+      "url": "https://github.com/krkn/anye/blob/master/LICENSE-MIT"
     }
   ],
   "main": "lib/anye",
