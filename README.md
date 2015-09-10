@@ -33,7 +33,7 @@ Anye.set( sName, sURL );
 - `sName` is the key to store the URL
 - `sURL` is the URL to store. It can have named-parameters beginning by `:`, like in `/url/:id`.
 
-**Note:** the `set` method returns the stored URL, so you can use it directly in your route definition like in express: `app.post( Anye.set( "name", "/url/:id" ), routeHandler );` 
+**Note:** the `set` method returns the stored URL, so you can use it directly in your route definition like in express: `app.post( Anye.set( "name", "/url/:id" ), routeHandler );`
 
 ##### Aliases
 
@@ -82,7 +82,7 @@ Anye.get( "name", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ); // w
 #### Signature
 
 ```javascript
-Anye.get( sURL, oParams, bDecode )
+Anye.generate( sURL, oParams, bDecode )
 ```
 
 ##### Arguments
@@ -125,8 +125,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-* **2014-10-07:** version `0.4.0`, add aliases, add `generate` method
-* **2014-10-06:** version `0.3.0`, returned URLs are encoded by default
+* **2014-10-07:** version `0.4.0`, add aliases, add `generate` method.
+* **2014-10-06:** version `0.3.0`, returned URLs are encoded by default.
 * **2014-10-06:** version `0.2.0`, add query-string population with additional parameters.
 * **2014-10-05:** version `0.1.0`, initial release.
 
