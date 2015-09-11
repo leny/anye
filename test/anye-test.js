@@ -40,6 +40,12 @@ module.exports = {
         oTest.equal( Anye.get( "multi-params", { id: 2, module: "foo" } ), "/url/2/foo", "Anye.get should return the good url, with the given params." );
         oTest.equal( Anye.get( "multi-params", { module: 2, id: "foo" } ), "/url/foo/2", "Anye.get should return the good url, with the given params." );
 
+        // Raw url
+        oTest.throws( function() { Anye.raw( "unknown" ); }, "Anye.raw should throws when calling an url that is not in the store." );
+        oTest.equal( Anye.raw( "simple" ), "/url/", "Anye.raw should return the good url." );
+        oTest.equal( Anye.raw( "one-param" ), "/url/:id", "Anye.raw should return the good url." );
+        oTest.equal( Anye.url( "multi-params" ), "/url/:id/:module", "Anye.raw url return the good url." );
+
             // URL Decoding
         oTest.equal( Anye.get( "one-param", { id: "bar^" } ), "/url/bar%5E", "Anye.get should return the good url, with the given params, and URL-encoded by default." );
         oTest.equal( Anye.get( "one-param", { id: "bar^" }, true ), "/url/bar^", "Anye.get should return the good url, with the given params, and URL-decoded." );

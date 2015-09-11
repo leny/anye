@@ -103,6 +103,33 @@ Anye.generate( "/url/:id", { id: 2, foo: "bar", bar: "baz" } ); // will returns 
 Anye.generate( "/url/:id", { id: 2, foo: "bar", bar: { baz: "bar", zab: "baz" } } ); // will returns "/url/2?foo=bar&bar%5Bbaz%5D=bar&bar%5Bzab%5D=baz"
 ```
 
+### Get the raw URL
+
+#### Signature
+
+```javascript
+Anye.raw( sName )
+```
+
+##### Arguments
+
+- `sName` is the key of the URL in the store.
+
+**Note:** if a parameter of the URL is not given, **anyè** will throws.
+
+**Update:** since version `0.3.0`, all the returned URLs are URL-encoded by default.
+
+##### Aliases
+
+`Anye.url()`
+
+#### Example
+
+```javascript
+Anye.url( "name"); // will returns "/url/:id"
+```
+
+
 ### Clear the store
 
 #### Signature
