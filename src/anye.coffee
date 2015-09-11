@@ -22,8 +22,7 @@ _set = ( sName, sURL ) ->
     oDataStore[ sName ] = sURL
 
 _raw = ( sName) ->
-    throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
-    oDataStore[ sName ]
+    oDataStore[ sName ] ? throw new Error "Unknown URL '#{ sName }'!"
 
 _get = ( sName, oParams, bDecode ) ->
     throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
