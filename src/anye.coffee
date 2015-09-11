@@ -21,6 +21,10 @@ _clear = ->
 _set = ( sName, sURL ) ->
     oDataStore[ sName ] = sURL
 
+_raw = ( sName) ->
+    throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
+    oDataStore[ sName ]
+
 _get = ( sName, oParams, bDecode ) ->
     throw new Error "Unknown URL '#{ sName }'!" unless sURL = oDataStore[ sName ]
     _generate sURL, oParams, bDecode
@@ -50,5 +54,7 @@ module.exports = oAnye =
     get: _get
     retrieve: _get
     build: _get
+    raw:_raw
+    url:_raw
 
 oAnye.__defineGetter__ "length", _count
