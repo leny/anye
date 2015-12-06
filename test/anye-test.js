@@ -40,6 +40,9 @@ module.exports = {
         oTest.equal( Anye.get( "multi-params", { id: 2, module: "foo" } ), "/url/2/foo", "Anye.get should return the good url, with the given params." );
         oTest.equal( Anye.get( "multi-params", { module: 2, id: "foo" } ), "/url/foo/2", "Anye.get should return the good url, with the given params." );
 
+        // All
+        oTest.deepEqual( Anye.all(), { "simple": "/url/", "one-param": "/url/:id", "multi-params": "/url/:id/:module" }, "Anye.all should return all the DataStore" );
+
         // Raw url
         oTest.throws( function() { Anye.raw( "unknown" ); }, "Anye.raw should throws when calling an url that is not in the store." );
         oTest.equal( Anye.raw( "simple" ), "/url/", "Anye.raw should return the good url." );
