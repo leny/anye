@@ -145,12 +145,27 @@ Anye.clear();
 Anye.get( "name", { id: 2 } ); // throws Error
 ```
 
+### Get all the store
+
+#### Signature
+
+```javascript
+Anye.all()
+```
+
+#### Example
+
+```javascript
+Anye.all(); // will returns { "name": "/url/:id" }
+```
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](//gruntjs.com).
 
 ## Release History
 
+* **2015-12-06:** version `0.6.0`, add `raw` method.
 * **2015-09-11:** version `0.5.0`, add `raw` method.
 * **2014-10-07:** version `0.4.0`, add aliases, add `generate` method.
 * **2014-10-06:** version `0.3.0`, returned URLs are encoded by default.
