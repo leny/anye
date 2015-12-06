@@ -53,9 +53,9 @@
     "grunt-contrib-coffee": "^0.13.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "matchdep": "^0.3.0"
+    "matchdep": "^1.0.0"
   },
   "dependencies": {
-    "qs": "^5.0.0"
+    "qs": "^6.0.1"
   }
 }
