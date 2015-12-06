@@ -165,7 +165,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-* **2015-12-06:** version `0.6.0`, add `raw` method.
+* **2015-12-06:** version `0.6.1`, update minimal runtime version.
+* **2015-12-06:** version `0.6.0`, add `all` method.
 * **2015-09-11:** version `0.5.0`, add `raw` method.
 * **2014-10-07:** version `0.4.0`, add aliases, add `generate` method.
 * **2014-10-06:** version `0.3.0`, returned URLs are encoded by default.
