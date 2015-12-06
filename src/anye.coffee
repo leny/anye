@@ -45,6 +45,9 @@ _generate = ( sURL, oParams, bDecode ) ->
 _count = ->
     Object.keys( oDataStore ).length
 
+_all = ->
+    oDataStore
+
 module.exports = oAnye =
     clear: _clear
     generate: _generate
@@ -53,7 +56,8 @@ module.exports = oAnye =
     get: _get
     retrieve: _get
     build: _get
-    raw:_raw
-    url:_raw
+    raw: _raw
+    url: _raw
+    all: _all
 
 oAnye.__defineGetter__ "length", _count
