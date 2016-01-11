@@ -1,6 +1,6 @@
 # anyè
 
-[![NPM version](http://img.shields.io/npm/v/anye.svg)](https://www.npmjs.org/package/anye) [![Build Status](https://secure.travis-ci.org/krkn/anye.png?branch=master)](http://travis-ci.org/krkn/anye) ![Dependency Status](https://david-dm.org/krkn/anye.svg) ![Downloads counter](http://img.shields.io/npm/dm/anye.svg)
+[![NPM version](http://img.shields.io/npm/v/anye.svg)](https://www.npmjs.org/package/anye) [![Build Status](https://secure.travis-ci.org/leny/anye.png?branch=master)](http://travis-ci.org/leny/anye) ![Dependency Status](https://david-dm.org/leny/anye.svg) ![Downloads counter](http://img.shields.io/npm/dm/anye.svg)
 
 
 > Server-agnostic named URL builder for node.js
@@ -189,5 +189,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) 2014 Leny for KRKN  
+Copyright (c) 2014 leny  
 Licensed under the MIT license.
