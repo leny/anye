@@ -159,6 +159,20 @@ Anye.all()
 Anye.all(); // will returns { "name": "/url/:id" }
 ```
 
+### Count the urls in the store
+
+#### Signature
+
+```javascript
+Anye.count()
+```
+
+#### Example
+
+```javascript
+Anye.count(); // will returns 1
+```
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](//gruntjs.com).
