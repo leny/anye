@@ -14,13 +14,13 @@ module.exports = {
         oTest.equal( Anye.set( "one-param", "/url/:id" ), "/url/:id", "Anye.set should return the given URL." );
 
         // Counting
-        oTest.equal( Anye.length, 2, "Anye.length should be 2." );
+        oTest.equal( Anye.count(), 2, "Anye.count should return 2." );
         Anye.set( "multi-params", "/url/:id/:module" );
-        oTest.equal( Anye.length, 3, "Anye.length should be 3." );
+        oTest.equal( Anye.count(), 3, "Anye.count should return 3." );
 
         // Clearing
         Anye.clear();
-        oTest.equal( Anye.length, 0, "Anye.length should be 0." );
+        oTest.equal( Anye.count(), 0, "Anye.count() should return 0." );
 
         Anye.set( "simple", "/url/" );
         Anye.set( "one-param", "/url/:id" );
