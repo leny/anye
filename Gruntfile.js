@@ -26,7 +26,7 @@ module.exports = ( grunt ) => {
         },
         "watch": {
             "src": {
-                "files": "src/**/¨.js",
+                "files": "src/**/*.js",
                 "tasks": [ "default" ]
             }
         }
