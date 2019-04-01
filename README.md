@@ -179,6 +179,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+* **2019-04-01:** version `2.0.0`, Export as `cjs` and `esm` modules, minimal support in **node 10.0**
 * **2016-01-11:** version `1.0.0`, Use ES2015 for source, add `count` method.
 * **2015-12-06:** version `0.6.1`, update minimal runtime version.
 * **2015-12-06:** version `0.6.0`, add `all` method.
@@ -190,5 +191,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) 2014 leny  
+Copyright (c) 2014 leny
 Licensed under the MIT license.
