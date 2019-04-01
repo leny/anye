@@ -8,90 +8,78 @@
 
 import QS from "qs";
 
-let oDataStore = {},
-    rMatchURLParam = /:[a-z0-9_]+/gi,
-    fClear,
-    fSet,
-    fRaw,
-    fGet,
-    fGenerate,
-    fCount,
-    fAll;
+let datastore = {};
 
-fClear = function() {
-    oDataStore = {};
+const matchURLParam = /:[a-z0-9_]+/gi;
+
+const clear = () => {
+    datastore = {};
 };
 
-fSet = function(sName, sURL) {
-    oDataStore[sName] = sURL;
-    return oDataStore[sName];
+const set = (name, url) => {
+    datastore[name] = url;
+    return datastore[name];
 };
 
-fRaw = function(sName) {
-    if (!oDataStore[sName]) {
-        throw new Error(`Unknown URL '${sName}'!`);
+const raw = name => {
+    if (!datastore[name]) {
+        throw new Error(`Unknown URL '${name}'!`);
     }
-    return oDataStore[sName];
+    return datastore[name];
 };
 
-fGet = function(sName, oParams, bDecode) {
-    let sURL;
+const generate = (url, params = {}, decode = false) => {
+    let matches = url.match(matchURLParam) || [],
+        additionalParams = {},
+        queryString,
+        result;
 
-    if (!(sURL = oDataStore[sName])) {
-        throw new Error(`Unknown URL '${sName}'!`);
-    }
-    return fGenerate(sURL, oParams, bDecode);
-};
+    result = matches.reduce((acc, match) => {
+        let value;
 
-fGenerate = function(sURL, oParams, bDecode) {
-    let aMatches = sURL.match(rMatchURLParam) || [],
-        oAdditionalParams = {},
-        sQueryString,
-        sAssembledURL = sURL;
-
-    for (let sMatch of aMatches) {
-        let mValue;
-
-        if (!(mValue = oParams[sMatch.slice(1)])) {
-            throw new Error(`Undefined param '${sMatch}'!`);
+        if (!(value = params[match.slice(1)])) {
+            throw new Error(`Undefined param '${match}'!`);
         }
-        sAssembledURL = sAssembledURL.replace(
-            sMatch,
-            encodeURIComponent(mValue),
-        );
-    }
 
-    for (let sParam in oParams) {
-        if (aMatches.indexOf(`:${sParam}`) === -1) {
-            oAdditionalParams[sParam] = oParams[sParam];
+        return acc.replace(match, encodeURIComponent(value));
+    }, url);
+
+    Object.keys(params).forEach(param => {
+        if (!matches.includes(`:${param}`)) {
+            additionalParams[param] = params[param];
         }
+    });
+
+    if ((queryString = QS.stringify(additionalParams))) {
+        result += `?${queryString}`;
     }
 
-    if ((sQueryString = QS.stringify(oAdditionalParams))) {
-        sAssembledURL += `?${sQueryString}`;
+    return decode ? decodeURIComponent(result) : result;
+};
+
+const get = (name, params, decode = false) => {
+    let url;
+
+    if (!(url = datastore[name])) {
+        throw new Error(`Unknown URL '${name}'!`);
     }
-
-    return bDecode ? decodeURIComponent(sAssembledURL) : sAssembledURL;
+    return generate(url, params, decode);
 };
 
-fCount = function() {
-    return Object.keys(oDataStore).length;
-};
+const count = () => Object.keys(datastore).length;
 
-fAll = function() {
-    return oDataStore;
-};
+const all = () => datastore;
 
 export {
-    fClear as clear,
-    fGenerate as generate,
-    fSet as set,
-    fSet as store,
-    fGet as get,
-    fGet as retrieve,
-    fGet as build,
-    fRaw as raw,
-    fRaw as url,
-    fAll as all,
-    fCount as count,
+    clear,
+    generate,
+    set,
+    set as store,
+    get,
+    get as retrieve,
+    get as build,
+    raw,
+    raw as url,
+    all,
+    count,
 };
