@@ -40,6 +40,7 @@
   ],
   "main": "lib/cjs/anye.js",
   "module": "lib/esm/anye.js",
+  "types": "types/anye.d.ts",
   "scripts": {
     "build:cjs": "npx babel src --env-name cjs --out-dir lib/cjs",
     "build:esm": "npx babel src --env-name esm --out-dir lib/esm",
@@ -50,7 +51,8 @@
   },
   "files": [
     "lib",
-    "src"
+    "src",
+    "types"
   ],
   "engines": {
     "node": ">=10.0.0"
