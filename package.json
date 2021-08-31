@@ -1,6 +1,6 @@
 {
   "name": "anye",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Server-agnostic named URL builder for node.js",
   "keywords": [
     "key-value",
