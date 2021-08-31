@@ -57,7 +57,7 @@ const generate = (url, params = {}, decode = false) => {
     return decode ? decodeURIComponent(result) : result;
 };
 
-const get = (name, params, decode = false) => {
+const get = (name, params={}, decode = false) => {
     let url;
 
     if (!(url = datastore[name])) {
